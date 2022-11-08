@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2022 at 04:12 AM
+-- Generation Time: Nov 08, 2022 at 08:37 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -32,7 +32,7 @@ CREATE TABLE `anno` (
   `image` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
   `detail` varchar(255) NOT NULL,
-  `date` datetime NOT NULL DEFAULT current_timestamp()
+  `date` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -40,7 +40,55 @@ CREATE TABLE `anno` (
 --
 
 INSERT INTO `anno` (`id`, `image`, `title`, `detail`, `date`) VALUES
-(5, 'AGFX2605.jpg', 'aaaadsde', 'aaaaaaa', '2022-11-05 19:55:00');
+(7, 'bfpnhq_ISO_Certified_29Dec2021.jpg', 'NOTICE TO PROCEED - LPO-22-05-0007', 'Supply and Delivery of Ambulance (Type-1 Basic Life Support )', '2022-10-05 14:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `client`
+--
+
+CREATE TABLE `client` (
+  `id` int(11) NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `username` varchar(250) NOT NULL,
+  `email` varchar(250) NOT NULL,
+  `password` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `client`
+--
+
+INSERT INTO `client` (`id`, `name`, `username`, `email`, `password`) VALUES
+(5, 'gelo mauhay', 'gelo03', 'gelo@gmail.com', '202cb962ac59075b964b07152d234b70');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `record`
+--
+
+CREATE TABLE `record` (
+  `id` int(11) NOT NULL,
+  `appnum` varchar(50) NOT NULL,
+  `nowner` varchar(50) NOT NULL,
+  `esname` varchar(50) NOT NULL,
+  `autho` varchar(50) NOT NULL,
+  `address` varchar(50) NOT NULL,
+  `bnature` varchar(50) NOT NULL,
+  `area` varchar(50) NOT NULL,
+  `contact` varchar(50) NOT NULL,
+  `date` varchar(50) NOT NULL,
+  `status` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `record`
+--
+
+INSERT INTO `record` (`id`, `appnum`, `nowner`, `esname`, `autho`, `address`, `bnature`, `area`, `contact`, `date`, `status`) VALUES
+(5, '2323', 'Thelma Mendoza', 'Thelma Store', 'Thelma Mendoza Mauhay', 'Sampaguita Mabini Batangas', 'Sari sari Store', '4x4', '009871664155', '2022-10-19', '');
 
 -- --------------------------------------------------------
 
@@ -63,16 +111,6 @@ CREATE TABLE `staff` (
   `password` varchar(150) NOT NULL,
   `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `staff`
---
-
-INSERT INTO `staff` (`id`, `name`, `em_code`, `department`, `role`, `gender`, `contact`, `date_birth`, `address`, `username`, `email`, `password`, `image`) VALUES
-(1, 'Anjie Mauhay', '1234', 'Sales and Marketing', 'ADMIN', 'MALE', '0764221', '2021-02-04', 'Sampaguita', 'anjie03', 'anjie@gmail.com', '12345', 'AGFX2605.jpg'),
-(2, 'Gelo Mauhay', '1223', 'Administration', 'EMPLOYEE', 'MALE', '099287167352', '2022-09-14', 'ashhjahj', 'asadad', 'adad@gmail.com', '1234', 'DZXB1952.jpg'),
-(3, 'Joshua Lorez', '9875', 'Network Engineering', 'ADMIN', 'MALE', '096514434267', '2022-09-21', 'Calamias', 'josh0121', 'josh@gmail.com', '12345', 'IKIK6541.jpg'),
-(34, 'gelo mauhay', '1212', '2', 'ADMIN', 'MALE', '089776766565', '2022-09-15', 'hgh', 'gg', 'ggg@gamil.com', '1111', 'AGFX2605.jpg');
 
 -- --------------------------------------------------------
 
@@ -99,8 +137,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `status`, `gender`, `contact`, `birth`, `address`, `username`, `email`, `password`, `image`) VALUES
-(2, 'anjie', 'Active', 'MALE', '077777777777', '2022-09-08', '7777', 'anjiemau03', 'ajajja@gmail.com', '12345', 'profile_vrt_raw_bytes_1587515400_10885.png'),
-(4, '1111111111', 'Active', 'MALE', '111111111111', '2022-10-06', 'aaa', 'aaaa', 'aaaa@g.nj', 'aaa', 'profile_vrt_raw_bytes_1587515400_10885.png');
+(5, 'Anjenette Mauhay', 'Active', 'MALE', '099897286126', '2022-10-08', 'Sampaguita Mabini Batangas', 'anjie03', 'anjiemauhay@gmail.com', '12345', 'images.png'),
+(6, 'Joshua Del Mundo', 'Inactive', 'MALE', '092211113332', '2022-10-08', 'Calimais Mabini Batangas', 'josh01', 'josh@gmail.com', '12345', 'profile-2398782_1280.webp');
 
 --
 -- Indexes for dumped tables
@@ -110,6 +148,18 @@ INSERT INTO `user` (`id`, `name`, `status`, `gender`, `contact`, `birth`, `addre
 -- Indexes for table `anno`
 --
 ALTER TABLE `anno`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `client`
+--
+ALTER TABLE `client`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `record`
+--
+ALTER TABLE `record`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -132,7 +182,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `anno`
 --
 ALTER TABLE `anno`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `client`
+--
+ALTER TABLE `client`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `record`
+--
+ALTER TABLE `record`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=226;
 
 --
 -- AUTO_INCREMENT for table `staff`
@@ -144,7 +206,7 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
