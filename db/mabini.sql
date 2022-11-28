@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bfp`
+-- Database: `mabini`
 --
 
 -- --------------------------------------------------------
@@ -40,7 +40,7 @@ CREATE TABLE `anno` (
 --
 
 INSERT INTO `anno` (`id`, `image`, `title`, `detail`, `date`) VALUES
-(7, 'bfpnhq_ISO_Certified_29Dec2021.jpg', 'NOTICE TO PROCEED - LPO-22-05-0007', 'Supply and Delivery of Ambulance (Type-1 Basic Life Support )', '2022-10-05 14:00:00');
+(7, 'mabininhq_ISO_Certified_29Dec2021.jpg', 'NOTICE TO PROCEED - LPO-22-05-0007', 'Supply and Delivery of Ambulance (Type-1 Basic Life Support )', '2022-10-05 14:00:00');
 
 -- --------------------------------------------------------
 

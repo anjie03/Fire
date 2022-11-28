@@ -4,7 +4,7 @@ $sname = "localhost";
 $uname = "root";
 $password = "";
 
-$db_name = "bfp";
+$db_name = "mabini";
 
 $con = mysqli_connect($sname, $uname, $password, $db_name);
 
